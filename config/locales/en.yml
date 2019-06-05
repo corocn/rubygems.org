@@ -189,6 +189,9 @@ en:
       success: You have successfully disabled multifactor authentication.
     update:
       success: You have successfully updated your MFA level.
+  security_keys:
+    new:
+      title: Enabling passwordless auth
   profiles:
     edit:
       email_awaiting_confirmation: Please confirm your new email address %{unconfirmed_email}

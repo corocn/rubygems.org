@@ -133,6 +133,7 @@ Rails.application.routes.draw do
     resource :dashboard, only: :show, constraints: { format: /html|atom/ }
     resources :profiles, only: :show
     resource :multifactor_auth, only: %i[new create update]
+    resource :security_key, only: %i[new create]
     resource :profile, only: %i[edit update] do
       member do
         get :delete

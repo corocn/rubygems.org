@@ -111,6 +111,11 @@
 </div>
 
 <div class="t-body">
+  <h2><%= 'Passwordless authentication' %></h2>
+  <%= button_to "Register a new security key", new_security_key_path, :method => 'get', :class => 'form__submit' %>
+</div>
+
+<div class="t-body">
   <h2><%= t '.delete.delete_profile' %></h2>
   <p><%= t '.delete.warning' %></p>
   <%= button_to t('.delete.delete'), delete_profile_path, method: 'get', class: 'form__submit' %>
