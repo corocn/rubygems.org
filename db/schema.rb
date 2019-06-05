@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_20_164205) do
+ActiveRecord::Schema.define(version: 2019_06_05_132341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -110,6 +110,15 @@ ActiveRecord::Schema.define(version: 2019_02_20_164205) do
     t.index ["name"], name: "index_rubygems_on_name", unique: true
   end
 
+  create_table "security_keys", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "external_id"
+    t.string "public_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_security_keys_on_user_id"
+  end
+
   create_table "subscriptions", id: :serial, force: :cascade do |t|
     t.integer "rubygem_id"
     t.integer "user_id"
@@ -140,6 +149,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_164205) do
     t.string "mfa_seed"
     t.integer "mfa_level", default: 0
     t.string "mfa_recovery_codes", default: [], array: true
+    t.string "current_challenge"
     t.index ["email"], name: "index_users_on_email"
     t.index ["handle"], name: "index_users_on_handle"
     t.index ["id", "confirmation_token"], name: "index_users_on_id_and_confirmation_token"
