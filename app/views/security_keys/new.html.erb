@@ -4,19 +4,13 @@
 </div>
 
 <div class="t-body l-overflow">
-<!--  <div class="l-half--l">-->
-    <%#= raw @qrcode_svg %>
-<!--  </div>-->
-<!--  <div>-->
-<!--    <p><%#= t('.scan_prompt') %></p>-->
-<!--    <p>-->
-<!--      <span id="mfa-account"><%#= t('.account', account: "#{issuer}:#{current_user.email}") %></span><br>-->
-<!--      <span id="mfa-key"><%#= t('.key', key: @seed.chars.each_slice(4).map(&:join).join(' ')) %></span><br>-->
-<!--      <span id="mfa-type"><%#= t('.time_based') %></span>-->
-<!--    </p>-->
-<!--  </div>-->
+  <%= form_tag security_key_path, method: :post, class: 'js-form' do %>
+    <div class="text_field">
+      <%= label_tag :nickname, 'Security Key Nickname', class: 'form__label' %>
+      <p class='form__field__instructions'>Type nickname for security key.</p>
+      <%= text_field_tag :nickname, '', class: 'form__input', autocomplete: :off %>
+    </div>
+    <%= hidden_field_tag :data, '' %>
+  <% end %>
+  <button class="form__submit js-register" type="button">Register</button>
 </div>
-
-<%= form_tag security_key_path, method: :post, class: 'js-form' do %>
-  <%= hidden_field_tag :data, '' %>
-<% end %>

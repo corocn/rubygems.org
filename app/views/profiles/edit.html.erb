@@ -112,6 +112,12 @@
 
 <div class="t-body">
   <h2><%= 'Passwordless authentication' %></h2>
+
+  <% @user.security_keys.each do |security_key| %>
+    <p><%= security_key.nickname %>: <%= security_key.public_key %></p>
+  <% end %>
+
+
   <%= button_to "Register a new security key", new_security_key_path, :method => 'get', :class => 'form__submit' %>
 </div>
 
